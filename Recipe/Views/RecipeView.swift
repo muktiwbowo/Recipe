@@ -8,9 +8,27 @@
 import SwiftUI
 
 struct RecipeView: View {
+    @ObservedObject var data = RecipeViewModel()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack(alignment: .leading){
+            Text("Recipes").bold().font(.system(size: 24))
+            ScrollView{
+                LazyVStack(alignment: .leading){
+                
+                    ForEach(data.recipes){ recipe in
+                        HStack{
+                            Image(recipe.image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 50, height: 50, alignment: .center).clipped().cornerRadius(5)
+                            Text(recipe.name)
+                        }
+                    }
+                }
+            }
+        }
+        .padding([.horizontal, .vertical])
     }
 }
 
