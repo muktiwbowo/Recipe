@@ -15,7 +15,6 @@ struct RecipeView: View {
             Text("Recipes").bold().font(.system(size: 24))
             ScrollView{
                 LazyVStack(alignment: .leading){
-                
                     ForEach(data.recipes){ recipe in
                         HStack{
                             Image(recipe.image)
